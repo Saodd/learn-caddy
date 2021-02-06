@@ -16,7 +16,7 @@ func AuthMiddleware(ctx *gin.Context) {
 	token, _ := json.Marshal(&common.UserToken{Name: "Lewin Lan", Expired: time.Now().Unix() + 60})
 	tokenCipher := cc.Seal(token) // 加密时可以前后加盐，这里暂时不折腾了
 	tokenCipherB64 := base64.StdEncoding.EncodeToString(tokenCipher)
-	ctx.SetCookie(common.CookieKey, tokenCipherB64, 3600, "/", "localhost", false, true)
+	ctx.SetCookie(common.CookieKey, tokenCipherB64, 3600, "/", "", false, true)
 	// 执行下一个
 	ctx.Next()
 }

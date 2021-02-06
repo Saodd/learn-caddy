@@ -1,17 +1,8 @@
 :80 {
     reverse_proxy /business* {
-        to 10.0.1.232:30001
-        health_path /_/health
-        health_interval 1s
+        to localhost:30001
     }
     reverse_proxy /auth* {
-        to 10.0.1.232:30000
+        to localhost:30000
     }
 }
-
-10.0.1.232:80 {
-    file_server * {
-        root /etc/caddy/
-    }
-}
-
