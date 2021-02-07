@@ -1,8 +1,8 @@
 :80 {
     reverse_proxy /business* {
-        to localhost:30001
+        to learn-caddy-business.learn-linkerd:30001
     }
     reverse_proxy /auth* {
-        to localhost:30000
+        to learn-caddy-auth.learn-linkerd:30000
     }
 }
